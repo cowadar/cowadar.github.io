@@ -1,1 +1,265 @@
-site_name: My Docs
+# Project information
+site_name: "Documentatie van Cowarol & Bedar"
+site_description: "Blah"
+site_author: "Cowadar"
+site_url: "https://cowadar.github.io/"
+
+# Copyright
+copyright: "&copy; 2022 Cowadar"
+
+# Repository
+repo_name: "cowadar/cowadar.github.io"
+repo_url: "https://github.com/cowadar/cowadar.github.io"
+edit_uri: ""
+
+# Configuration
+docs_dir: "docs"
+
+theme:
+  name: "material"
+
+  language: "nl"
+
+#   shortcuts:
+#     help: 191 # ?
+#     next: 78 # n
+#     previous: 80 # p
+#     search: 83 # s
+
+  highlightjs: true
+
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  logo: "images/site/logo.png"
+  favicon: "images/site/favicon.ico"
+
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.prune
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - search.suggest
+    - search.share
+    - header.autohide
+    - content.code.annotate
+    - toc.integrate
+
+markdown_extensions:
+
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+
+plugins:
+  - search:
+      lang: nl
+      separator: '[\s\-\.]'
+  - git-revision-date-localized:
+      type: timeago
+      locale: nl
+      fallback_to_build_date: false
+  # - encryptcontent:
+  #     # use_secret: 'ENCRYPTCONTENT_PASSWORD'
+  #     summary: 'Deze pagina is beschermd met een wachtwoord'
+  #     placeholder: 'Geef wachtwoord en duw op ENTER'
+  #     decryption_failure_message: 'Verkeerd wachtwoord'
+  #     encryption_info_message: 'Contacteer de Admins om toegang te vragen'
+  #     encrypted_something:
+  #       mkdocs-encrypted-toc: [nav, class]
+  #       mkdocs-encrypted-footer: [div, id]
+  #       mkdocs-encrypted-footer-meta: [div, id]
+  - mermaid2:
+      arguments:
+        theme: 'dark'
+
+# Page tree
+nav:
+  - "🏠 Havenstad": "index.md"
+  - "💼 Jobs":
+    - "🚑 Ambulance": "guide/jobs/ambulance.md"
+    - "🚌 Bus": "guide/jobs/bus.md"
+    - "🌭 Hotdog": "guide/jobs/hotdog.md"
+    - "📰 Nieuws": "guide/jobs/nieuws.md"
+    - "👮 Politie": "guide/jobs/politie.md"
+    - "🛻 Takeldienst": "guide/jobs/takeldienst.md"
+    - "🚕 Taxi": "guide/jobs/taxi.md"
+    - "🚚 Trucker": "guide/jobs/trucker.md"
+    - "🔧 VAB": "guide/jobs/vab.md"
+    - "🚛 Vuilniswagen": "guide/jobs/vuilniswagen.md"
+    - "⛏️ Mijnen": "guide/jobs/mijnen.md"
+    - "🌮 Taco": "guide/jobs/taco.md"
+    - "🐟 Vissen": "guide/jobs/vissen.md"
+    - "🍇 Wijngaard": "guide/jobs/wijngaard.md"
+    - "🧑‍🌾 Landbouw": "guide/jobs/landbouw.md"
+    - "🤿 Duiken": "guide/jobs/duiken.md"
+    - "👔 Management": "guide/jobs/management.md"
+    - "🪙 Metaaldetector": "guide/jobs/metaaldetector.md"
+  - "💸 Financiël":
+    - "🏦 Bank": "guide/financieel/bank.md"
+    - "🪙 Crypto": "guide/financieel/crypto.md"
+    - "🤑 Pawnshop": "guide/financieel/pawnshop.md"
+  - "🦹 Character":
+    - "🤪 Character": "guide/character/character.md"
+    - "🔄 Command binding": "guide/character/commandbinding.md"
+    - "🕺 Emotes": "guide/character/emotes.md"
+    - "➕ Extra": "guide/character/extra.md"
+    - "⌚ Fitbit": "guide/character/fitbit.md"
+    - "📟 HUD": "guide/character/hud.md"
+    - "🐕 Huisdier": "guide/character/huisdier.md"
+    - "🎒 Inventory": "guide/character/inventory.md"
+    - "👕 Kledij": "guide/character/kledij.md"
+    - "🖨️ Printer": "guide/character/printer.md"
+    - "⭕ Radialmenu": "guide/character/radialmenu.md"
+    - "🗺️ Spawn": "guide/character/spawn.md"
+    - "🧎‍♀️ Strippers": "guide/character/strippers.md"
+    - "👁️ Target": "guide/character/target.md"
+    - "📱 Telefoon": "guide/character/telefoon.md"
+  - "🎰 Casino":
+    - "🃏 Blackjack": "guide/casino/blackjack.md"
+    - "☸️ Luckywheel": "guide/casino/luckywheel.md"
+    - "🏇 Paarden": "guide/casino/paarden.md"
+    - "🪩 Roulette": "guide/casino/roulette.md"
+    - "🎰 Slots": "guide/casino/slots.md"
+  - "🌇 Gebouwen":
+    - "🏢 Stadhuis": "guide/gebouwen/stadhuis.md"
+    - "🏪 Winkel": "guide/gebouwen/winkels.md"
+    - "🏡 Wonen": "guide/gebouwen/wonen.md"
+  - "☠️ Onderwereld":
+    - "⚗️ Drugs": "guide/onderwereld/drugs.md"
+    - "🔐 Gevangenis": "guide/onderwereld/gevangenis.md"
+    - "⛓️ Kidnappen": "guide/onderwereld/kidnap.md"
+    - "🪛 Lockpick": "guide/onderwereld/lockpick.md"
+    - "🤑 Verkopen": "guide/onderwereld/verkopen.md"
+    - "🔫 Wapens": "guide/onderwereld/wapens.md"
+    - "🧹 Werkstraf": "guide/onderwereld/werkstraf.md"
+    - "Overvallen":
+      - "💰 Bank": "guide/onderwereld/overvallen/bank.md"
+      - "🔫 Huis": "guide/onderwereld/overvallen/huis.md"
+      - "🍎 iFruit": "guide/onderwereld/overvallen/ifruit.md"
+      - "💎 Juwelier": "guide/onderwereld/overvallen/juwelier.md"
+      - "🚚 Truck": "guide/onderwereld/overvallen/truck.md"
+      - "🏪 Winkel": "guide/onderwereld/overvallen/winkel.md"
+  - "🚘 Voertuigen":
+    - "🚗 Voertuig": "guide/voertuigen/voertuig.md"
+    - "🏎️ Autowinkel": "guide/voertuigen/autowinkel.md"
+    - "🅿️ Garages": "guide/voertuigen/garages.md"
+    - "🏁 Racen": "guide/voertuigen/racen.md"
+    - "🔋 Sloperij": "guide/voertuigen/sloperij.md"
+    - "🎨 Tuning": "guide/voertuigen/tuning.md"
+  - "💾 Server":
+    - "📊 Info": "guide/server/info.md"
+    - "⌨️ Commando's": "guide/server/commands.md"
+  - "📜 Regels":
+    - "⛵ Server":
+      - "Wetboek": "rules/server/wetboek.md"
+      - "Algemene Plaatselijke Verordening": "rules/server/apv.md"
+      - "Risicogebieden": "rules/server/risico-gebieden.md"
+      - "Douanegebieden": "rules/server/douanegebieden.md"
+      - "NOTAM": "rules/server/notam.md"
+      - "Belastingen": "rules/server/belastingen.md"
+      - "Regelement voor de rechtspraak": "rules/server/rechtspraak.md"
+      - "Streamen op Havenstad": "rules/server/streamen.md"
+      - "Offroad Voertuigen": "rules/server/offroadvoertuigen.md"
+      - "Kosten":
+        - "Advocatuur": "rules/server/kosten/advocatuur.md"
+        - "Ambulance": "rules/server/kosten/ambulance.md"
+        - "ANWB": "rules/server/kosten/anwb.md"
+        - "Politie": "rules/server/kosten/politie.md"
+        - "Vliegschool": "rules/server/kosten/vliegschool.md"
+    - "🎤 Discord":
+      - "Algemeen": "rules/discord/discord.md"
+  # - "📋 Vacatures":
+  #   - "📝 Schrijver": "vacatures/schrijver.md"
+  - "👾 Admin":
+    - "⌨️ Commando's": "guide/admin/commands.md"
+    - "Dev tools": "guide/admin/devtools.md"
+
+
+extra:
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    cookies:
+      analytics: Custom name
+    actions:
+      - accept
+      - manage
+
+  # version:
+  #   provider: mike
+  #   default: latest
+
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/kYTDZc5mnG
+      name: Havenstad Discord
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCnDHClzKX1bgx8h2JW_Oa_A
+      name: Havenstad youtube kanaal
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/havenstadrp
+      name: Havenstad Facebook
+
+  generator: false
+
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
