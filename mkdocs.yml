@@ -125,7 +125,7 @@ plugins:
 
 nav:
   - "🏠 Home": "index.md"
-  - "Docker":
+  - "🧮 Docker":
     - "Docker install": "docker/install.md"
     - "Docker Services":
       - "Documentation":
@@ -135,7 +135,7 @@ nav:
           - "Fivem": "docker/services/gameserver/fivem/fivem.md"
         - "Pterodactyl":
           - "Pterodactyl": "docker/services/gameserver/pterodactyl/pterodactyl.md"
-  - "🖧 Netwerk":
+  - "🌐 Netwerk":
     - "DNS":
       - "Cloudflare": "network/dns/cloudflare.md"
       - "NPM": "network/dns/nginx_proxy_manager.md"
@@ -146,21 +146,25 @@ nav:
       - "Unifi": "network/router/unifi.md"
     - "VPN":
       - "VPN": "network/vpn/vpn.md"
-  - "Operating Systems":
+  - "📟 Operating Systems":
     - "Operating Systems": "operating_systems/operating_systems.md"
     - "Ubuntu":
       - "Ubuntu": "operating_systems/linux/ubuntu/ubuntu.md"
       - "Ubuntu Snippets": "operating_systems/linux/ubuntu/snippets.md"
     - "Raspberry Pi OS":
       - "Raspberry Pi OS": "operating_systems/linux/raspberry_pi_os/raspberry_pi_os.md"
-  - "Programming":
+  - "🤖 Programming":
+    - "DevOps":
+      - "Github":
+        - "Github": "devops/github/github.md"
+        - "Github Commands": "devops/github/github_commands.md"
     - "Python":
       - "Python": "programming/python/python.md"
     - "YAML":
       - "YAML": "programming/yaml/yaml.md"
-  - "Security":
+  - "🔒 Security":
     - "Vaultwarden": "security/vaultwarden.md"
-  - "Server":
+  - "🖥️ Server":
     - "Automation":
       - "Ansible":
         - "Ansible": "server/automation/ansible/ansible.md"
@@ -177,13 +181,9 @@ nav:
       - "TrueNAS": "server/truenas/truenas.md"
     - "Unraid":
       - "Unraid": "server/unraid/unraid.md"
-  - "DevOps":
-    - "Github":
-      - "Github": "devops/github/github.md"
-      - "Github Commands": "devops/github/github_commands.md"
-  - "Software":
+  - "💾 Software":
     - "Discord": "software/discord/discord.md"
-  - "Over Cowadar":
+  - "📇 Over Cowadar":
     - "Cowadar":
       - "Algemeen": "about/cowadar.md"
       - "Bedar": "about/bedar.md"
