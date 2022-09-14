@@ -15,11 +15,11 @@ edit_uri: ""
 # Configuration
 docs_dir: "docs"
 
-dev_addr: '127.0.0.1:8001'
+# dev_addr: '127.0.0.1:8001'
 
 theme:
   name: "material"
-
+  # custom_dir: overrides
   language: "nl"
 
   shortcuts:
@@ -62,6 +62,7 @@ theme:
     - navigation.indexes
     - search.suggest
     - search.share
+    - search.highlight
     - header.autohide
     - content.code.annotate
     - content.tooltips
@@ -134,7 +135,7 @@ nav:
           - "Fivem": "docker/services/gameserver/fivem/fivem.md"
         - "Pterodactyl":
           - "Pterodactyl": "docker/services/gameserver/pterodactyl/pterodactyl.md"
-  - "Netwerk":
+  - "🖧 Netwerk":
     - "DNS":
       - "Cloudflare": "network/dns/cloudflare.md"
       - "NPM": "network/dns/nginx_proxy_manager.md"
@@ -201,6 +202,22 @@ extra:
     actions:
       - accept
       - manage
+    analytics:
+      provider: google
+      property: G-2XCYZRX6FS
+      feedback:
+      title: Was deze pagina nuttig?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: Deze pagina was nuttig!
+          data: 1
+          note: >-
+            Bedankt voor je feedback!
+        - icon: material/emoticon-sad-outline
+          name: Deze pagina kan worden verbeterd
+          data: 0
+          note: >-
+            Bedankt voor je feedback! Help ons om deze pagina te verbeteren via ons <a href="https://github.com/.../issues/new/?title=[Feedback]+{title}+-+{url}" target="_blank" rel="noopener">feedback form</a>.
 
   version:
     provider: mike
