@@ -60,3 +60,9 @@ sudo netplan apply
 sudo apt update & sudo apt upgrade -y
 sudo do-release-upgrade
 ```
+
+## Sluit een process op een gegeven poort
+
+```bash
+sudo kill -9 `sudo lsof -t -i:9001`
+```

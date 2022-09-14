@@ -4,5 +4,5 @@
 
 ## Links
 
-- [Ubuntu](ubuntu/ubuntu.md)
-- [Raspberry Pi OS](raspberry_pi_os/raspberry_pi_os.md)
+- [Ubuntu](linux/ubuntu/ubuntu.md)
+- [Raspberry Pi OS](linux/raspberry_pi_os/raspberry_pi_os.md)

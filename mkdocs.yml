@@ -15,11 +15,11 @@ edit_uri: ""
 # Configuration
 docs_dir: "docs"
 
-# dev_addr: '127.0.0.1:8001'
+dev_addr: '127.0.0.1:8001'
 
 theme:
   name: "material"
-  # custom_dir: overrides
+  custom_dir: docs/overrides
   language: "nl"
 
   shortcuts:
@@ -34,7 +34,7 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: blue
+      primary: black
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -42,7 +42,7 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: blue
+      primary: black
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -117,11 +117,18 @@ plugins:
       separator: '[\s\-\.]'
   - git-revision-date-localized:
       type: timeago
+      timezone: Europe/Brussels
       locale: nl
-      fallback_to_build_date: true
+      fallback_to_build_date: false
+      enable_creation_date: true
+      exclude:
+        - index.md
+      enabled: true
   - mermaid2:
       arguments:
         theme: 'dark'
+  - git-authors
+
 
 nav:
   - "🏠 Home": "index.md"
@@ -136,6 +143,7 @@ nav:
         - "Pterodactyl":
           - "Pterodactyl": "docker/services/gameserver/pterodactyl/pterodactyl.md"
   - "🌐 Netwerk":
+    - "Networking": "network/networking.md"
     - "DNS":
       - "Cloudflare": "network/dns/cloudflare.md"
       - "NPM": "network/dns/nginx_proxy_manager.md"
@@ -151,13 +159,16 @@ nav:
     - "Ubuntu":
       - "Ubuntu": "operating_systems/linux/ubuntu/ubuntu.md"
       - "Ubuntu Snippets": "operating_systems/linux/ubuntu/snippets.md"
+      - "Docker installeren": "operating_systems/linux/ubuntu/docker.md"
+      - "Parallel": "operating_systems/linux/ubuntu/parallel.md"
     - "Raspberry Pi OS":
       - "Raspberry Pi OS": "operating_systems/linux/raspberry_pi_os/raspberry_pi_os.md"
   - "🤖 Programming":
+    - "Programming": "programming/programming.md"
     - "DevOps":
       - "Github":
-        - "Github": "devops/github/github.md"
-        - "Github Commands": "devops/github/github_commands.md"
+        - "Github": "programming/devops/github/github.md"
+        - "Github Commands": "programming/devops/github/github_commands.md"
     - "Python":
       - "Python": "programming/python/python.md"
     - "YAML":
@@ -226,15 +237,20 @@ extra:
   social:
     - icon: fontawesome/brands/discord
       link: https://discord.gg/kYTDZc5mnG
-      name: Havenstad Discord
+      name: Discord
+
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/channel/UCnDHClzKX1bgx8h2JW_Oa_A
-      name: Havenstad youtube kanaal
+      name: Youtube
+
     - icon: fontawesome/brands/facebook
       link: https://www.facebook.com/havenstadrp
-      name: Havenstad Facebook
+      name: Facebook
 
-  generator: false
+  # generator: false
+
+extra_css:
+  - stylesheets/extra.css
 
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
