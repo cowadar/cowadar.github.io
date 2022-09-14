@@ -19,7 +19,7 @@ Docker Engine wordt ondersteund op `x86_64`(of `amd64`), `armhf`, `arm64`, en `s
 
 Oudere versies van Docker werden `docker`, `docker.io`, of `docker-engine`. Als deze zijn geïnstalleerd, verwijder ze dan:
 
-```
+```bash
 sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
 
@@ -78,12 +78,6 @@ Voordat u Docker Engine voor de eerste keer op een nieuwe hostcomputer installee
      sudo apt-get update
      sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
     ```
-
-    !!! info
-
-        Ontvangt u een GPG-fout tijdens het hardlopen `apt-get update`?
-
-        Uw standaard umask is mogelijk niet correct ingesteld, waardoor het openbare sleutelbestand voor de repo niet wordt gedetecteerd. Voer de volgende opdracht uit en probeer vervolgens uw repo opnieuw bij te werken: `sudo chmod a+r /etc/apt/keyrings/docker.gpg`.
 
 2. Om een _specifieke versie_ van Docker Engine te installeren, vermeldt u de beschikbare versies in de repo, selecteert u en installeert u:
 
