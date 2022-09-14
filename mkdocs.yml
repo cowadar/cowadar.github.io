@@ -1,6 +1,6 @@
 # Project information
-site_name: "Documentatie van Cowarol & Bedar"
-site_description: "Blah"
+site_name: "Personal Knowledge Management"
+site_description: "Documentatie van Cowarol & Bedar"
 site_author: "Cowadar"
 site_url: "https://cowadar.github.io/"
 
@@ -10,21 +10,23 @@ copyright: "&copy; 2022 Cowadar"
 # Repository
 repo_name: "cowadar/cowadar.github.io"
 repo_url: "https://github.com/cowadar/cowadar.github.io"
-edit_uri: ""
+edit_uri: "edit/main/docs/"
 
 # Configuration
 docs_dir: "docs"
 
+dev_addr: '127.0.0.1:8001'
+
 theme:
   name: "material"
-
+  custom_dir: overrides
   language: "nl"
 
-#   shortcuts:
-#     help: 191 # ?
-#     next: 78 # n
-#     previous: 80 # p
-#     search: 83 # s
+  shortcuts:
+    help: 191 # ?
+    next: 78 # n
+    previous: 80 # p
+    search: 83 # s
 
   highlightjs: true
 
@@ -32,6 +34,7 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: blue
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -39,27 +42,30 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: blue
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
 
-  logo: "images/site/logo.png"
+  logo: "assets/images/site/cowadar_light.svg"
   favicon: "images/site/favicon.ico"
 
   features:
     - navigation.tabs
     - navigation.tabs.sticky
-   # - navigation.sections
+    # - navigation.sections
+    # - navigation.expand
     - navigation.prune
     - navigation.top
     - navigation.instant
     - navigation.tracking
-    # - navigation.indexes
+    - navigation.indexes
     - search.suggest
     - search.share
     - header.autohide
     - content.code.annotate
-    - toc.integrate
+    - content.tooltips
+    # - toc.integrate
 
 markdown_extensions:
 
@@ -104,7 +110,6 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
-
 plugins:
   - search:
       lang: nl
@@ -112,43 +117,29 @@ plugins:
   - git-revision-date-localized:
       type: timeago
       locale: nl
-      fallback_to_build_date: false
-  # - encryptcontent:
-  #     # use_secret: 'ENCRYPTCONTENT_PASSWORD'
-  #     summary: 'Deze pagina is beschermd met een wachtwoord'
-  #     placeholder: 'Geef wachtwoord en duw op ENTER'
-  #     decryption_failure_message: 'Verkeerd wachtwoord'
-  #     encryption_info_message: 'Contacteer de Admins om toegang te vragen'
-  #     encrypted_something:
-  #       mkdocs-encrypted-toc: [nav, class]
-  #       mkdocs-encrypted-footer: [div, id]
-  #       mkdocs-encrypted-footer-meta: [div, id]
+      fallback_to_build_date: true
   - mermaid2:
       arguments:
         theme: 'dark'
 
 # Page tree
-nav:
-  - "🏠 Home": "index.md"
-  - "💼 Linux":
-    - "🚑 Intro": "linux/index.md"
-    - "🚑 Ubuntu": "linux/ubuntu/index.md"
-    - "🚑 SUSE": "linux/suse/index.md"
-  - "🎰 Unraid":
-    - "🃏 Blackjack": "unraid/vm/linux/index.md"
-  - "🌇 Proxmox":
-    - "🏢 ubuntu": "proxmox/ubuntu/index.md"
-  - "🌇 Raspberry pi":
-    - "🏢 SSD": "raspberry_pi/ssd.md"
-  - "☠️ Network":
-    - "⚗️ routers": "guide/onderwereld/drugs.md"
-    - "🔐 PFSense": "guide/onderwereld/gevangenis.md"
-    - "⛓️ Unify": "guide/onderwereld/kidnap.md"
-    - "🪛 VPN": "guide/onderwereld/lockpick.md"
-
-
-
-
+# nav:
+#   - "🏠 Home": "index.md"
+#   - "💼 Linux":
+#     - "🚑 Intro": "linux/index.md"
+#     - "🚑 Ubuntu": "linux/ubuntu/index.md"
+#     - "🚑 SUSE": "linux/suse/index.md"
+#   - "🎰 Unraid":
+#     - "🃏 Blackjack": "unraid/vm/linux/index.md"
+#   - "🌇 Proxmox":
+#     - "🏢 ubuntu": "proxmox/ubuntu/index.md"
+#   - "🌇 Raspberry pi":
+#     - "🏢 SSD": "raspberry_pi/ssd.md"
+#   - "☠️ Network":
+#     - "⚗️ routers": "guide/onderwereld/drugs.md"
+#     - "🔐 PFSense": "guide/onderwereld/gevangenis.md"
+#     - "⛓️ Unify": "guide/onderwereld/kidnap.md"
+#     - "🪛 VPN": "guide/onderwereld/lockpick.md"
 
 extra:
   consent:
@@ -164,9 +155,9 @@ extra:
       - accept
       - manage
 
-  # version:
-  #   provider: mike
-  #   default: latest
+  version:
+    provider: mike
+    default: latest
 
   social:
     - icon: fontawesome/brands/discord

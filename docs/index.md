@@ -1,20 +1,34 @@
-# Welcome to MkDocs
+---
+layout: landing
+hide:
+  - navigation
+  - toc
+---
+# Personal Knowledge Management
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+![Cowadar Logo](assets/images/site/cowadar_light.svg)
 
-## Commands
+## Waarom een PKM?
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+We hebben deze PKM opgezet aangezien we beide dagelijks veel bijleren en er dagelijks nieuwe technologiëen en ontwikkelingen ontstaan.
+Aangezien we het fijn vinden om mee te zijn met de laatste nieuwtjes, hebben we uiteraard ook een plaats nodig om dit te kunnen documenteren.
 
-## Project layout
+## Hoe is deze PKM ontstaan?
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+In het begin hebben we op [Discord](software/discord.md) veel nuttige informatie "📌 gepind" in onze gezamelijke chat. Deze chat is heilig voor ons en hebben al vaak gesproken over wat een ramp het zou zijn als deze chat ooit verwijderd zou worden.
 
+Uiteraard is een chat niet overzichtelijk en moeten we toch vaak beroep doen op de zoekfunctie.
 
-## Dit is toegevoegd door DAniel
+Daarom heeft [Bedar](about/bedar.md) voorgesteld om te werken met [mkdocs](docker/services/mkdocs.md).
+
+## Welke informatie kan ik hier terugvinden?
+
+Alle informatie die we belangrijk genoeg vinden om te documenteren en die ons kunnen helpen met onze dagelijkse taken.
+
+## Mag ik zelf iets toevoegen of verbeteren?
+
+Uiteraard! Je bent altijd welkom om PR's te sturen.
+
+## Hoe kan ik jullie contacteren?
+
+Zie [social links] -> Hiervoor linktree ofzo opzetten
