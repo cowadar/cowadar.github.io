@@ -2,82 +2,162 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://cowadar.github.io/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/about/bedar/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/about/cowadar/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/about/cowarol/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/devops/github/github/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/devops/github/github_commands/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cowadar.github.io/docker/install/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/gameserver/fivem/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/docker/services/documentation/mkdocs/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/gameserver/pterodactyl/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/docker/services/gameserver/fivem/fivem/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/linux/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/docker/services/gameserver/pterodactyl/pterodactyl/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/linux/ubuntu/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/network/dns/cloudflare/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/netwerk/cloudflare/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/network/dns/nginx_proxy_manager/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/netwerk/nginx_porxy_manager/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/network/dns/pihole/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/netwerk/pfsense/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/network/dns/traefik/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/netwerk/pihole/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/network/router/pfsense/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/netwerk/treafik/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/network/router/unifi/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/netwerk/unifi/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/network/vpn/vpn/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/netwerk/vpn/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/operating_systems/operating_systems/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/raspberry_pi/ssd/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/operating_systems/linux/raspberry_pi_os/raspberry_pi_os/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/operating_systems/linux/ubuntu/snippets/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/operating_systems/linux/ubuntu/ubuntu/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/programming/python/python/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/programming/yaml/yaml/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cowadar.github.io/security/vaultwarden/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/unraid/vm/linux/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <loc>https://cowadar.github.io/server/automation/ansible/ansible/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/server/automation/terraform/terraform/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/server/management/ssh/ssh/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/server/proxmox/snippets/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/server/raspberry_pi/raspberry_pi/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/server/truenas/truenas/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/server/unraid/unraid/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/software/discord/discord/</loc>
+         <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
