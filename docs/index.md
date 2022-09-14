@@ -15,11 +15,11 @@ Aangezien we het fijn vinden om mee te zijn met de laatste nieuwtjes, hebben we 
 
 ## Hoe is deze PKM ontstaan?
 
-In het begin hebben we op [Discord](software/discord.md) veel nuttige informatie "📌 gepind" in onze gezamelijke chat. Deze chat is heilig voor ons en hebben al vaak gesproken over wat een ramp het zou zijn als deze chat ooit verwijderd zou worden.
+In het begin hebben we op [Discord](software/discord/discord.md) veel nuttige informatie "📌 gepind" in onze gezamelijke chat. Deze chat is heilig voor ons en hebben al vaak gesproken over wat een ramp het zou zijn als deze chat ooit verwijderd zou worden.
 
 Uiteraard is een chat niet overzichtelijk en moeten we toch vaak beroep doen op de zoekfunctie.
 
-Daarom heeft [Bedar](about/bedar.md) voorgesteld om te werken met [mkdocs](docker/services/mkdocs.md).
+Daarom heeft [Bedar](about/bedar.md) voorgesteld om te werken met [mkdocs](docker/services/documentation/mkdocs.md).
 
 ## Welke informatie kan ik hier terugvinden?
 

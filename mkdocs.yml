@@ -10,7 +10,7 @@ copyright: "&copy; 2022 Cowadar"
 # Repository
 repo_name: "cowadar/cowadar.github.io"
 repo_url: "https://github.com/cowadar/cowadar.github.io"
-edit_uri: "edit/main/docs/"
+edit_uri: ""
 
 # Configuration
 docs_dir: "docs"
@@ -122,24 +122,71 @@ plugins:
       arguments:
         theme: 'dark'
 
-# Page tree
-# nav:
-#   - "🏠 Home": "index.md"
-#   - "💼 Linux":
-#     - "🚑 Intro": "linux/index.md"
-#     - "🚑 Ubuntu": "linux/ubuntu/index.md"
-#     - "🚑 SUSE": "linux/suse/index.md"
-#   - "🎰 Unraid":
-#     - "🃏 Blackjack": "unraid/vm/linux/index.md"
-#   - "🌇 Proxmox":
-#     - "🏢 ubuntu": "proxmox/ubuntu/index.md"
-#   - "🌇 Raspberry pi":
-#     - "🏢 SSD": "raspberry_pi/ssd.md"
-#   - "☠️ Network":
-#     - "⚗️ routers": "guide/onderwereld/drugs.md"
-#     - "🔐 PFSense": "guide/onderwereld/gevangenis.md"
-#     - "⛓️ Unify": "guide/onderwereld/kidnap.md"
-#     - "🪛 VPN": "guide/onderwereld/lockpick.md"
+nav:
+  - "🏠 Home": "index.md"
+  - "Docker":
+    - "Docker install": "docker/install.md"
+    - "Docker Services":
+      - "Documentation":
+        - "mkdocs": "docker/services/documentation/mkdocs.md"
+      - "Game Servers":
+        - "Fivem":
+          - "Fivem": "docker/services/gameserver/fivem/fivem.md"
+        - "Pterodactyl":
+          - "Pterodactyl": "docker/services/gameserver/pterodactyl/pterodactyl.md"
+  - "Netwerk":
+    - "DNS":
+      - "Cloudflare": "network/dns/cloudflare.md"
+      - "NPM": "network/dns/nginx_proxy_manager.md"
+      - "Pihole": "network/dns/pihole.md"
+      - "Traefik": "network/dns/traefik.md"
+    - "Router":
+      - "Pfsense": "network/router/pfsense.md"
+      - "Unifi": "network/router/unifi.md"
+    - "VPN":
+      - "VPN": "network/vpn/vpn.md"
+  - "Operating Systems":
+    - "Operating Systems": "operating_systems/operating_systems.md"
+    - "Ubuntu":
+      - "Ubuntu": "operating_systems/linux/ubuntu/ubuntu.md"
+      - "Ubuntu Snippets": "operating_systems/linux/ubuntu/snippets.md"
+    - "Raspberry Pi OS":
+      - "Raspberry Pi OS": "operating_systems/linux/raspberry_pi_os/raspberry_pi_os.md"
+  - "Programming":
+    - "Python":
+      - "Python": "programming/python/python.md"
+    - "YAML":
+      - "YAML": "programming/yaml/yaml.md"
+  - "Security":
+    - "Vaultwarden": "security/vaultwarden.md"
+  - "Server":
+    - "Automation":
+      - "Ansible":
+        - "Ansible": "server/automation/ansible/ansible.md"
+      - "Terraform":
+        - "Terraform": "server/automation/terraform/terraform.md"
+    - "Management":
+      - "SSH":
+        - "SSH": "server/management/ssh/ssh.md"
+    - "Proxmox":
+      - "Snippets": "server/proxmox/snippets.md"
+    - "Raspberry Pi":
+      - "Raspberry Pi": "server/raspberry_pi/raspberry_pi.md"
+    - "TrueNAS":
+      - "TrueNAS": "server/truenas/truenas.md"
+    - "Unraid":
+      - "Unraid": "server/unraid/unraid.md"
+  - "DevOps":
+    - "Github":
+      - "Github": "devops/github/github.md"
+      - "Github Commands": "devops/github/github_commands.md"
+  - "Software":
+    - "Discord": "software/discord/discord.md"
+  - "Over Cowadar":
+    - "Cowadar":
+      - "Algemeen": "about/cowadar.md"
+      - "Bedar": "about/bedar.md"
+      - "Cowarol": "about/cowarol.md"
 
 extra:
   consent:
