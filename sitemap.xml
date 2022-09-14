@@ -86,6 +86,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://cowadar.github.io/operating_systems/linux/debian/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://cowadar.github.io/operating_systems/linux/raspberry_pi_os/raspberry_pi_os/</loc>
          <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
