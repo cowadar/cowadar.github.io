@@ -1,0 +1,1617 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Documentatie van Cowarol &amp; Bedar" name="description"/>
+<meta content="Cowadar" name="author"/>
+<link href="https://cowadar.github.io/operating_systems/linux/ubuntu/parallel/" rel="canonical"/>
+<link href="../../../../images/site/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.5.0" name="generator"/>
+<title>Parallel - Personal Knowledge Management</title>
+<link href="../../../../assets/stylesheets/main.2e8b5541.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../../css/timeago.css" rel="stylesheet"/>
+<link href="../../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="" data-md-color-primary="black" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#processing-linux-commands-in-parallel">
+          Ga naar inhoud
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-component="outdated" hidden="">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Personal Knowledge Management" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="Personal Knowledge Management">
+<img alt="logo" src="../../../../assets/images/site/cowadar_light.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Personal Knowledge Management
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Parallel
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="black" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Zoeken" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Zoeken" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/cowadar/cowadar.github.io" title="Ga naar repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    cowadar/cowadar.github.io
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+      🏠 Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../docker/install/">
+        🧮 Docker
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../network/networking/">
+        🌐 Netwerk
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../../operating_systems/">
+        📟 Operating Systems
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../programming/programming/">
+        🤖 Programming
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../security/vaultwarden/">
+        🔒 Security
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../server/automation/ansible/ansible/">
+        🖥️ Server
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../software/discord/discord/">
+        💾 Software
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../about/cowadar/">
+        📇 Over Cowadar
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Personal Knowledge Management" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="Personal Knowledge Management">
+<img alt="logo" src="../../../../assets/images/site/cowadar_light.svg"/>
+</a>
+    Personal Knowledge Management
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/cowadar/cowadar.github.io" title="Ga naar repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    cowadar/cowadar.github.io
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../..">
+        🏠 Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+          🧮 Docker
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="🧮 Docker" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          🧮 Docker
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../docker/install/">
+        Docker install
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+          Docker Services
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Docker Services" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Docker Services
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_1" id="__nav_2_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_1">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Documentation" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_1">
+<span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../docker/services/documentation/mkdocs/">
+        mkdocs
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" id="__nav_2_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_2">
+          Game Servers
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Game Servers" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Game Servers
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2_1" id="__nav_2_2_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_2_1">
+          Fivem
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Fivem" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_2_2_1">
+<span class="md-nav__icon md-icon"></span>
+          Fivem
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../docker/services/gameserver/fivem/fivem/">
+        Fivem
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2_2" id="__nav_2_2_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_2_2">
+          Pterodactyl
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Pterodactyl" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_2_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Pterodactyl
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../docker/services/gameserver/pterodactyl/pterodactyl/">
+        Pterodactyl
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          🌐 Netwerk
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="🌐 Netwerk" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          🌐 Netwerk
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../network/networking/">
+        Networking
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2">
+          DNS
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="DNS" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          DNS
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../network/dns/cloudflare/">
+        Cloudflare
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../network/dns/nginx_proxy_manager/">
+        NPM
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../network/dns/pihole/">
+        Pihole
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../network/dns/traefik/">
+        Traefik
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3">
+          Router
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Router" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Router
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../network/router/pfsense/">
+        Pfsense
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../network/router/unifi/">
+        Unifi
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
+          VPN
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="VPN" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          VPN
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../network/vpn/vpn/">
+        VPN
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          📟 Operating Systems
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="📟 Operating Systems" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          📟 Operating Systems
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operating_systems/">
+        Operating Systems
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2">
+          Ubuntu
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Ubuntu" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          Ubuntu
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ubuntu/">
+        Ubuntu
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../snippets/">
+        Ubuntu Snippets
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../docker/">
+        Docker installeren
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Parallel
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Parallel
+      </a>
+<nav aria-label="Inhoudsopgave" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-introduction">
+    1. Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-a-sample-task">
+    2. A Sample Task
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-using">
+    3. Using &amp;
+  </a>
+<nav aria-label="3. Using &amp;" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-using-wait-with">
+    3.1. Using wait with &amp;
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-using-_xargs">
+    4. Using _xargs
+  </a>
+<nav aria-label="4. Using _xargs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-using-replacement">
+    4.1. Using Replacement
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-handling-arguments-with-newlines">
+    4.2. Handling Arguments With Newlines
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-using-gnu-parallel">
+    5. Using GNU parallel
+  </a>
+<nav aria-label="5. Using GNU parallel" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-basic-usage">
+    5.1. Basic Usage
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-running-combinations-of-multiple-sources">
+    5.2. Running Combinations of Multiple Sources
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-linking-sources">
+    5.3. Linking Sources
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-replacement-strings">
+    5.4. Replacement Strings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-reading-input-from-file-columns">
+    5.5. Reading Input From File Columns
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#56-saving-output">
+    5.6. Saving Output
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#57-progress-information">
+    5.7. Progress Information
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#58-running-parallel-tasks-on-remote-machines">
+    5.8. Running Parallel Tasks on Remote Machines
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-conclusion">
+    6. Conclusion[
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3">
+          Raspberry Pi OS
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Raspberry Pi OS" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+          Raspberry Pi OS
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../raspberry_pi_os/raspberry_pi_os/">
+        Raspberry Pi OS
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+          🤖 Programming
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="🤖 Programming" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          🤖 Programming
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../programming/programming/">
+        Programming
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2">
+          DevOps
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="DevOps" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+          DevOps
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_1" id="__nav_5_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2_1">
+          Github
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Github" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+          Github
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../programming/devops/github/github/">
+        Github
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../programming/devops/github/github_commands/">
+        Github Commands
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Python" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../programming/python/python/">
+        Python
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" id="__nav_5_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_4">
+          YAML
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="YAML" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_4">
+<span class="md-nav__icon md-icon"></span>
+          YAML
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../programming/yaml/yaml/">
+        YAML
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+          🔒 Security
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="🔒 Security" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          🔒 Security
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../security/vaultwarden/">
+        Vaultwarden
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7">
+          🖥️ Server
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="🖥️ Server" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          🖥️ Server
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" id="__nav_7_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1">
+          Automation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Automation" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_1">
+<span class="md-nav__icon md-icon"></span>
+          Automation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_1" id="__nav_7_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_1">
+          Ansible
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Ansible" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_1">
+<span class="md-nav__icon md-icon"></span>
+          Ansible
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../server/automation/ansible/ansible/">
+        Ansible
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_2" id="__nav_7_1_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_2">
+          Terraform
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Terraform" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_2">
+<span class="md-nav__icon md-icon"></span>
+          Terraform
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../server/automation/terraform/terraform/">
+        Terraform
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" id="__nav_7_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2">
+          Management
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Management" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_2">
+<span class="md-nav__icon md-icon"></span>
+          Management
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_1" id="__nav_7_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_1">
+          SSH
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="SSH" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_2_1">
+<span class="md-nav__icon md-icon"></span>
+          SSH
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../server/management/ssh/ssh/">
+        SSH
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" id="__nav_7_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_3">
+          Proxmox
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Proxmox" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+          Proxmox
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../server/proxmox/snippets/">
+        Snippets
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" id="__nav_7_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_4">
+          Raspberry Pi
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_4">
+<span class="md-nav__icon md-icon"></span>
+          Raspberry Pi
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../server/raspberry_pi/raspberry_pi/">
+        Raspberry Pi
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_5" id="__nav_7_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_5">
+          TrueNAS
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TrueNAS" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_5">
+<span class="md-nav__icon md-icon"></span>
+          TrueNAS
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../server/truenas/truenas/">
+        TrueNAS
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_6" id="__nav_7_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_6">
+          Unraid
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Unraid" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_6">
+<span class="md-nav__icon md-icon"></span>
+          Unraid
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../server/unraid/unraid/">
+        Unraid
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8">
+          💾 Software
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="💾 Software" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+          💾 Software
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../software/discord/discord/">
+        Discord
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" id="__nav_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9">
+          📇 Over Cowadar
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="📇 Over Cowadar" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+          📇 Over Cowadar
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_1" id="__nav_9_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9_1">
+          Cowadar
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Cowadar" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_9_1">
+<span class="md-nav__icon md-icon"></span>
+          Cowadar
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../about/cowadar/">
+        Algemeen
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../about/bedar/">
+        Bedar
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../about/cowarol/">
+        Cowarol
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Inhoudsopgave" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-introduction">
+    1. Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-a-sample-task">
+    2. A Sample Task
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-using">
+    3. Using &amp;
+  </a>
+<nav aria-label="3. Using &amp;" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-using-wait-with">
+    3.1. Using wait with &amp;
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-using-_xargs">
+    4. Using _xargs
+  </a>
+<nav aria-label="4. Using _xargs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-using-replacement">
+    4.1. Using Replacement
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-handling-arguments-with-newlines">
+    4.2. Handling Arguments With Newlines
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-using-gnu-parallel">
+    5. Using GNU parallel
+  </a>
+<nav aria-label="5. Using GNU parallel" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-basic-usage">
+    5.1. Basic Usage
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-running-combinations-of-multiple-sources">
+    5.2. Running Combinations of Multiple Sources
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-linking-sources">
+    5.3. Linking Sources
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-replacement-strings">
+    5.4. Replacement Strings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-reading-input-from-file-columns">
+    5.5. Reading Input From File Columns
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#56-saving-output">
+    5.6. Saving Output
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#57-progress-information">
+    5.7. Progress Information
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#58-running-parallel-tasks-on-remote-machines">
+    5.8. Running Parallel Tasks on Remote Machines
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-conclusion">
+    6. Conclusion[
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="processing-linux-commands-in-parallel">Processing Linux Commands in Parallel<a class="headerlink" href="#processing-linux-commands-in-parallel" title="Permanent link">¶</a></h1>
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">¶</a></h2>
+<p>There are many common tasks in Linux that we may want to consider running in parallel, such as:</p>
+<ul>
+<li>Downloading a large number of files</li>
+<li>Encoding/decoding a large number of images on a machine with multiple CPU cores</li>
+<li>Making a computation with many different parameters and storing the results</li>
+</ul>
+<p>Of course, we can accomplish all these tasks without using parallelization. But if we process each file, connection, or <strong>computation in several parallel processes, we can have a great advantage in terms of speed</strong>. Luckily, there are multiple powerful command-line tools for parallelization in Linux systems that can help us achieve this.</p>
+<p>In this tutorial, we’re going to see how to use the Bash ampersand <em>&amp;</em> operator, <a href="https://man7.org/linux/man-pages/man1/xargs.1.html"><em>xargs</em></a>, and <a href="https://www.gnu.org/software/parallel/man.html">GNU <em>parallel</em></a> to achieve parallelization on the Linux command line.</p>
+<h2 id="2-a-sample-task">2. A Sample Task<a class="headerlink" href="#2-a-sample-task" title="Permanent link">¶</a></h2>
+<p>First, let’s create a simple script that we’ll run in parallel.</p>
+<p>Let’s create a file named <em>./process</em> with contents:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nb">echo</span> <span class="s2">"started processing </span><span class="nv">$*</span><span class="s2">.."</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>sleep <span class="k">$((</span><span class="m">2</span> <span class="o">+</span> RANDOM <span class="o">%</span> <span class="m">3</span><span class="k">))</span><span class="p">;</span> <span class="nb">echo</span> finished processing <span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>This script will fake an actual process that takes 2 to 5 seconds to complete. Let’s make it executable to be able to use it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>chmod +x ./process
+</code></pre></div></td></tr></table></div>
+<h2 id="3-using">3. Using &amp;<a class="headerlink" href="#3-using" title="Permanent link">¶</a></h2>
+<p>As a basic way to run commands in parallel, we can use the built-in <a href="https://www.baeldung.com/linux/run-multiple-commands-in-background">Bash ampersand <em>&amp;</em> operator</a> to run a command asynchronously so that the shell doesn’t wait for the current command to complete before moving on to the next one:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>./process <span class="m">1</span> <span class="p">&amp;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>./process <span class="m">2</span> <span class="p">&amp;</span>
+</code></pre></div></td></tr></table></div>
+<p>This will create two processes that will start at essentially the same instant and run in parallel. Because we’ve introduced random <em>sleep</em> times in our example script, the output may look like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span>
+<span class="normal"><a href="#__codelineno-3-8">8</a></span>
+<span class="normal"><a href="#__codelineno-3-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span> <span class="m">25254</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="o">[</span><span class="m">2</span><span class="o">]</span> <span class="m">25255</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>started processing <span class="m">1</span>..
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>started processing <span class="m">2</span>..
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>finished processing <span class="m">2</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>finished processing <span class="m">1</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span>-  Done                    ./process <span class="m">1</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="o">[</span><span class="m">2</span><span class="o">]</span>+  Done                    ./process <span class="m">2</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Clearly, we can use this approach to run many parallel processes. But if we have many tasks – for example, a hundred images to be converted – we wouldn’t want to start all hundred tasks at once, but instead, process them in batches to utilize our cores better.</strong> To achieve this, we need to wait for some tasks to complete before starting others.</p>
+<h3 id="31-using-wait-with">3.1. Using <em>wait</em> with &amp;<a class="headerlink" href="#31-using-wait-with" title="Permanent link">¶</a></h3>
+<p>The <a href="https://man7.org/linux/man-pages/man2/waitid.2.html"><em>wait</em></a> command will, by default, wait for all child processes to exit. So, using the <em>wait</em> command, we can run batches of operations:</p>
+<p>AD</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">echo</span> <span class="s2">"starting batch 1.."</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>./process <span class="m">1</span>.jpg <span class="p">&amp;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>./process <span class="m">2</span>.jpg <span class="p">&amp;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>./process <span class="m">3</span>.jpg <span class="p">&amp;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="nb">wait</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="nb">echo</span> <span class="s2">"starting batch 2.."</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>./process <span class="m">4</span>.jpg <span class="p">&amp;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>./process <span class="m">5</span>.jpg <span class="p">&amp;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>./process <span class="m">6</span>.jpg <span class="p">&amp;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="nb">wait</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="nb">echo</span> <span class="s2">"finished"</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>However, there’s one big downside to this approach. To utilize our CPU cores effectively, we’d want a new process to start as soon as a running process ends.</strong> But with this solution, we wouldn’t start new processes until all the tasks in the previous batch were completed. To overcome this limitation, we can use <em>xargs</em>.</p>
+<h2 id="4-using-_xargs">4. Using _xargs<a class="headerlink" href="#4-using-_xargs" title="Permanent link">¶</a></h2>
+<p><a href="https://www.baeldung.com/linux/xargs"><em>xargs</em> is a command-line tool</a> that helps us run commands with arguments parsed from standard input. It can also parallelize our tasks for us.</p>
+<p>Let’s try the previous input we used with &amp;, but this time with <em>xargs</em>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>$ <span class="nb">echo</span> <span class="s1">'1.jpg 2.jpg 3.jpg 4.jpg 5.jpg 6.jpg'</span> <span class="p">|</span> xargs -n <span class="m">1</span> -P <span class="m">3</span> ./process
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>started processing <span class="m">1</span>.jpg..
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>started processing <span class="m">2</span>.jpg..
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>started processing <span class="m">3</span>.jpg..
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>finished processing <span class="m">1</span>.jpg
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>finished processing <span class="m">2</span>.jpg
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>started processing <span class="m">4</span>.jpg..
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>started processing <span class="m">5</span>.jpg..
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>finished processing <span class="m">3</span>.jpg
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>started processing <span class="m">6</span>.jpg..
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>finished processing <span class="m">5</span>.jpg
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>finished processing <span class="m">4</span>.jpg
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a>finished processing <span class="m">6</span>.jpg
+</code></pre></div></td></tr></table></div>
+<p><strong><em>xargs</em> immediately creates the next process once a process is completed.</strong> We specify the number of arguments per call using the <em>-n</em> argument and the number of parallel tasks using the <em>-P</em> argument.</p>
+<h3 id="41-using-replacement">4.1. Using Replacement<a class="headerlink" href="#41-using-replacement" title="Permanent link">¶</a></h3>
+<p>If the executable we’re using requires us to put the arguments to some specific place rather than appending them directly after the executable name, we can use replacement.</p>
+<p>Let’s try it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>$ <span class="nv">args</span><span class="o">=</span><span class="s2">"1\n2\n3\n4\n5\n6"</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>$ <span class="nb">echo</span> -e <span class="nv">$args</span> <span class="p">|</span> xargs -I <span class="s2">"{}"</span> -P <span class="m">2</span> ./process <span class="o">{}</span>.jpg
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>started processing <span class="m">1</span>.jpg..
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>started processing <span class="m">2</span>.jpg..
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>finished processing <span class="m">2</span>.jpg
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>started processing <span class="m">3</span>.jpg..
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>finished processing <span class="m">1</span>.jpg
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>started processing <span class="m">4</span>.jpg..
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>finished processing <span class="m">3</span>.jpg
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>started processing <span class="m">5</span>.jpg..
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>finished processing <span class="m">5</span>.jpg
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>started processing <span class="m">6</span>.jpg..
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a>finished processing <span class="m">4</span>.jpg
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>finished processing <span class="m">6</span>.jpg
+</code></pre></div></td></tr></table></div>
+<h3 id="42-handling-arguments-with-newlines">4.2. Handling Arguments With Newlines<a class="headerlink" href="#42-handling-arguments-with-newlines" title="Permanent link">¶</a></h3>
+<p>If the arguments we want to use with our processes include newline characters, we can use a null character (\0) delimited input stream. For example, with the <a href="https://www.baeldung.com/linux/find-command"><em>find</em></a> command, we can set the output to be null-delimited instead of newline-delimited by using the <em>-print0</em> flag:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>find . -print0 <span class="p">|</span> xargs -0 -n <span class="m">2</span> -P <span class="m">2</span> ./process
+</code></pre></div></td></tr></table></div>
+<p>As the arguments are now null-delimited, we can be sure that newline characters in the input will be preserved.</p>
+<h2 id="5-using-gnu-parallel">5. Using GNU <em>parallel</em><a class="headerlink" href="#5-using-gnu-parallel" title="Permanent link">¶</a></h2>
+<p>GNU <em>parallel</em> is one of the most advanced command-line tools available for running parallel tasks. It has many features, including the ability to distribute and run tasks remotely on multiple machines using <em>ssh</em>.</p>
+<h3 id="51-basic-usage">5.1. Basic Usage<a class="headerlink" href="#51-basic-usage" title="Permanent link">¶</a></h3>
+<p>The basic usage of <em>parallel</em> is very similar to <em>xargs</em>. Actually, for simple cases, we can use it interchangeably with <em>xargs</em>.</p>
+<p>Let’s try:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>$ <span class="nv">args</span><span class="o">=</span><span class="s2">"1\n2\n3\n4\n5\n6"</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>$ <span class="nb">echo</span> -e <span class="nv">$args</span> <span class="p">|</span> parallel --ungroup --jobs <span class="m">3</span> ./process
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>started processing <span class="m">1</span>..
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>started processing <span class="m">2</span>..
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>started processing <span class="m">3</span>..
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>finished processing <span class="m">1</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>finished processing <span class="m">2</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>finished processing <span class="m">3</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>started processing <span class="m">4</span>..
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>started processing <span class="m">5</span>..
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>started processing <span class="m">6</span>..
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>finished processing <span class="m">5</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>finished processing <span class="m">4</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>finished processing <span class="m">6</span>
+</code></pre></div></td></tr></table></div>
+<p>The <em>–jobs</em> argument is the same as the <em>xargs</em> command’s <em>-P</em> argument, which determines the maximum number of parallel jobs to be running at the same time.</p>
+<p>By default, <em>parallel</em> will print the output of a process only after it is finished. The <em>–ungroup</em> flag disables this functionality. We can use it to see the actual execution order of commands as they are running.</p>
+<p>We can supply the input arguments also via the command line. Let’s try running it to get the same output as above:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>parallel --ungroup --jobs <span class="m">3</span> ./process ::: <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span>
+</code></pre></div></td></tr></table></div>
+<p>when supplying command-line arguments, we can use ::: (three colons) to supply arguments directly, and :::: (four colons) to supply arguments from a file.</p>
+<p>Let’s see an example that supplies input from a file:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nv">args</span><span class="o">=</span><span class="s2">"1\n2\n3\n4\n5\n6"</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="nb">echo</span> -e <span class="nv">$args</span> &gt; input.txt
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>parallel --ungroup --jobs <span class="m">3</span> ./process :::: input.txt
+</code></pre></div></td></tr></table></div>
+<p>The output would be similar to the above.</p>
+<h3 id="52-running-combinations-of-multiple-sources">5.2. Running Combinations of Multiple Sources<a class="headerlink" href="#52-running-combinations-of-multiple-sources" title="Permanent link">¶</a></h3>
+<p>We can use <em>parallel</em> to run tasks for every possible combination of two sources.</p>
+<p>Let’s try it for two sample sources:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>$ parallel --ungroup ./process ::: <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> ::: <span class="m">1</span> <span class="m">2</span> <span class="m">3</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>started processing <span class="m">1</span> <span class="m">1</span>..
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>started processing <span class="m">1</span> <span class="m">2</span>..
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>started processing <span class="m">1</span> <span class="m">3</span>..
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>started processing <span class="m">2</span> <span class="m">1</span>..
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>started processing <span class="m">2</span> <span class="m">2</span>..
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>started processing <span class="m">2</span> <span class="m">3</span>..
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>started processing <span class="m">3</span> <span class="m">1</span>..
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>started processing <span class="m">3</span> <span class="m">2</span>..
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>finished processing <span class="m">1</span> <span class="m">1</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a>finished processing <span class="m">1</span> <span class="m">2</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>finished processing <span class="m">2</span> <span class="m">1</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a>finished processing <span class="m">2</span> <span class="m">2</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a>finished processing <span class="m">3</span> <span class="m">1</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a>started processing <span class="m">3</span> <span class="m">3</span>..
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a>finished processing <span class="m">1</span> <span class="m">3</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a>finished processing <span class="m">3</span> <span class="m">2</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a>finished processing <span class="m">2</span> <span class="m">3</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a>finished processing <span class="m">3</span> <span class="m">3</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="53-linking-sources">5.3. Linking Sources<a class="headerlink" href="#53-linking-sources" title="Permanent link">¶</a></h3>
+<p>If instead of running for every possible combination, we want to “link” them after one another, we would use the <em>–link</em> flag. Let’s try it with two different input sources:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span>
+<span class="normal"><a href="#__codelineno-12-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>$ parallel --link --ungroup ./process ::: <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> ::: <span class="m">1</span> <span class="m">2</span> <span class="m">3</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>started processing <span class="m">1</span> <span class="m">1</span>..
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>started processing <span class="m">2</span> <span class="m">2</span>..
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>started processing <span class="m">3</span> <span class="m">3</span>..
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>finished processing <span class="m">1</span> <span class="m">1</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>finished processing <span class="m">3</span> <span class="m">3</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a>finished processing <span class="m">2</span> <span class="m">2</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="54-replacement-strings">5.4. Replacement Strings<a class="headerlink" href="#54-replacement-strings" title="Permanent link">¶</a></h3>
+<p>Like in <em>xargs</em>, we can use replacement strings in <em>parallel</em>. The default replacement string is {}.</p>
+<p>Let’s try it with a prefix:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>$ parallel --ungroup ./process item-<span class="o">{}</span> ::: <span class="m">1</span> <span class="m">2</span> <span class="m">3</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>started processing item-1..
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>started processing item-2..
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>started processing item-3..
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>finished processing item-1
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>finished processing item-2
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>finished processing item-3
+</code></pre></div></td></tr></table></div>
+<p>Other replacement strings do different kinds of manipulations on the input. For example, {.} will remove the extension from the argument:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span>
+<span class="normal"><a href="#__codelineno-14-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>$ parallel --ungroup ./process <span class="o">{</span>.<span class="o">}</span> ::: <span class="m">1</span>.jpg <span class="m">2</span>.jpg <span class="m">3</span>.jpg
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>started processing <span class="m">1</span>..
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>started processing <span class="m">2</span>..
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>started processing <span class="m">3</span>..
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>finished processing <span class="m">2</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>finished processing <span class="m">1</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a>finished processing <span class="m">3</span>
+</code></pre></div></td></tr></table></div>
+<p>If we want to use multiple different variables for each command, we can also do this using special replacement strings:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>$ parallel --ungroup --link ./process <span class="o">{</span><span class="m">1</span><span class="o">}</span>.jpg <span class="o">{</span><span class="m">2</span><span class="o">}</span>.jpg <span class="o">{</span><span class="m">3</span><span class="o">}</span>.jpg ::: <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> ::: <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> ::: <span class="m">7</span> <span class="m">8</span> <span class="m">9</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>started processing <span class="m">1</span>.jpg <span class="m">4</span>.jpg <span class="m">7</span>.jpg..
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>started processing <span class="m">2</span>.jpg <span class="m">5</span>.jpg <span class="m">8</span>.jpg..
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>started processing <span class="m">3</span>.jpg <span class="m">6</span>.jpg <span class="m">9</span>.jpg..
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>finished processing <span class="m">1</span>.jpg <span class="m">4</span>.jpg <span class="m">7</span>.jpg
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>finished processing <span class="m">2</span>.jpg <span class="m">5</span>.jpg <span class="m">8</span>.jpg
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>finished processing <span class="m">3</span>.jpg <span class="m">6</span>.jpg <span class="m">9</span>.jpg
+</code></pre></div></td></tr></table></div>
+<p>There are also many more options for replacement strings that can be found in the <a href="https://www.gnu.org/software/parallel/parallel_tutorial.html"><em>parallel</em> tutorial</a>.</p>
+<h3 id="55-reading-input-from-file-columns">5.5. Reading Input From File Columns<a class="headerlink" href="#55-reading-input-from-file-columns" title="Permanent link">¶</a></h3>
+<p>We can read the input from different columns of a text file. Let’s try it with a tab-separated text file:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span>
+<span class="normal"><a href="#__codelineno-16-6">6</a></span>
+<span class="normal"><a href="#__codelineno-16-7">7</a></span>
+<span class="normal"><a href="#__codelineno-16-8">8</a></span>
+<span class="normal"><a href="#__codelineno-16-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>$ <span class="nv">args</span><span class="o">=</span><span class="s2">"1\t4\n2\t5\n3\t6"</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>$ <span class="nb">echo</span> -e <span class="nv">$args</span> &gt; input_cols.txt
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>$ parallel --colsep <span class="s1">'\t'</span> --ungroup ./process <span class="o">[{</span><span class="m">1</span><span class="o">}]</span> <span class="o">[{</span><span class="m">2</span><span class="o">}]</span> :::: input_cols.txt
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>started processing <span class="o">[</span><span class="m">1</span><span class="o">]</span> <span class="o">[</span><span class="m">4</span><span class="o">]</span>..
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>started processing <span class="o">[</span><span class="m">2</span><span class="o">]</span> <span class="o">[</span><span class="m">5</span><span class="o">]</span>..
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a>started processing <span class="o">[</span><span class="m">3</span><span class="o">]</span> <span class="o">[</span><span class="m">6</span><span class="o">]</span>..
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a>finished processing <span class="o">[</span><span class="m">2</span><span class="o">]</span> <span class="o">[</span><span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a>finished processing <span class="o">[</span><span class="m">3</span><span class="o">]</span> <span class="o">[</span><span class="m">6</span><span class="o">]</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a>finished processing <span class="o">[</span><span class="m">1</span><span class="o">]</span> <span class="o">[</span><span class="m">4</span><span class="o">]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="56-saving-output">5.6. Saving Output<a class="headerlink" href="#56-saving-output" title="Permanent link">¶</a></h3>
+<p>We can save the output of each process into a file by using the <em>–files</em> flag:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>$ parallel --files --link ./process ::: <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> ::: <span class="m">1</span> <span class="m">2</span> <span class="m">3</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>/tmp/parnqFzp.par
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>/tmp/parSv0nW.par
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>/tmp/parGyNbz.par
+</code></pre></div></td></tr></table></div>
+<p>This will create <em>*.par</em> files with the output of our commands as the content.</p>
+<p>If we want to have a more friendly directory structure, we can use the <em>–results</em> and <em>–header</em> arguments to write the results to a folder in a hierarchy.</p>
+<p>Let’s run a command to generate the directory tree:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>parallel --results outdir --link ./process ::: a b c ::: d e f
+</code></pre></div></td></tr></table></div>
+<p>Now, let’s check the output using the <a href="https://www.baeldung.com/linux/print-tree-directory-structure"><em>tree</em></a> command:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-19-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-19-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-19-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-19-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-19-10">10</a></span>
+<span class="normal"><a href="#__codelineno-19-11">11</a></span>
+<span class="normal"><a href="#__codelineno-19-12">12</a></span>
+<span class="normal"><a href="#__codelineno-19-13">13</a></span>
+<span class="normal"><a href="#__codelineno-19-14">14</a></span>
+<span class="normal"><a href="#__codelineno-19-15">15</a></span>
+<span class="normal"><a href="#__codelineno-19-16">16</a></span>
+<span class="normal"><a href="#__codelineno-19-17">17</a></span>
+<span class="normal"><a href="#__codelineno-19-18">18</a></span>
+<span class="normal"><a href="#__codelineno-19-19">19</a></span>
+<span class="normal"><a href="#__codelineno-19-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>outdir
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>└── <span class="m">1</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>    ├── a
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>    │   └── <span class="m">2</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a>    │       └── d
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a>    │           ├── seq
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a>    │           ├── stderr
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a>    │           └── stdout
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a>    ├── b
+<a id="__codelineno-19-10" name="__codelineno-19-10"></a>    │   └── <span class="m">2</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11"></a>    │       └── e
+<a id="__codelineno-19-12" name="__codelineno-19-12"></a>    │           ├── seq
+<a id="__codelineno-19-13" name="__codelineno-19-13"></a>    │           ├── stderr
+<a id="__codelineno-19-14" name="__codelineno-19-14"></a>    │           └── stdout
+<a id="__codelineno-19-15" name="__codelineno-19-15"></a>    └── c
+<a id="__codelineno-19-16" name="__codelineno-19-16"></a>        └── <span class="m">2</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17"></a>            └── f
+<a id="__codelineno-19-18" name="__codelineno-19-18"></a>                ├── seq
+<a id="__codelineno-19-19" name="__codelineno-19-19"></a>                ├── stderr
+<a id="__codelineno-19-20" name="__codelineno-19-20"></a>                └── stdout
+</code></pre></div></td></tr></table></div>
+<p><em>parallel</em> generates the directory structure based on argument positions and values.</p>
+<h3 id="57-progress-information">5.7. Progress Information<a class="headerlink" href="#57-progress-information" title="Permanent link">¶</a></h3>
+<p>We can also have <em>parallel</em> show an estimate of the remaining time based on current task runs:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span>
+<span class="normal"><a href="#__codelineno-20-12">12</a></span>
+<span class="normal"><a href="#__codelineno-20-13">13</a></span>
+<span class="normal"><a href="#__codelineno-20-14">14</a></span>
+<span class="normal"><a href="#__codelineno-20-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>$ parallel --eta --colsep <span class="s1">'\t'</span> --ungroup ./process <span class="o">[{</span><span class="m">1</span><span class="o">}]</span> <span class="o">[{</span><span class="m">2</span><span class="o">}]</span> :::: input_cols.txt
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>started processing <span class="o">[</span><span class="m">1</span><span class="o">]</span> <span class="o">[</span><span class="m">4</span><span class="o">]</span>..
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>started processing <span class="o">[</span><span class="m">2</span><span class="o">]</span> <span class="o">[</span><span class="m">5</span><span class="o">]</span>..
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a>Computers / CPU cores / Max <span class="nb">jobs</span> to run
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="m">1</span>:local / <span class="m">8</span> / <span class="m">3</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a>started processing <span class="o">[</span><span class="m">3</span><span class="o">]</span> <span class="o">[</span><span class="m">6</span><span class="o">]</span>..
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a>
+<a id="__codelineno-20-10" name="__codelineno-20-10"></a>Computer:jobs running/jobs completed/%of started jobs/Average seconds to <span class="nb">complete</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11"></a>ETA: 0s Left: <span class="m">3</span> AVG: <span class="m">0</span>.00s  local:3/0/100%/0.0s finished processing <span class="o">[</span><span class="m">1</span><span class="o">]</span> <span class="o">[</span><span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12"></a>ETA: 0s Left: <span class="m">2</span> AVG: <span class="m">0</span>.00s  local:2/1/100%/3.0s finished processing <span class="o">[</span><span class="m">2</span><span class="o">]</span> <span class="o">[</span><span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13"></a>ETA: 0s Left: <span class="m">2</span> AVG: <span class="m">0</span>.00s  local:2/1/100%/3.0s finished processing <span class="o">[</span><span class="m">3</span><span class="o">]</span> <span class="o">[</span><span class="m">6</span><span class="o">]</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14"></a>ETA: 0s Left: <span class="m">1</span> AVG: <span class="m">0</span>.00s  local:1/2/100%/1.5s
+<a id="__codelineno-20-15" name="__codelineno-20-15"></a>ETA: 0s Left: <span class="m">0</span> AVG: <span class="m">0</span>.00s  local:0/3/100%/1.0s
+</code></pre></div></td></tr></table></div>
+<h3 id="58-running-parallel-tasks-on-remote-machines">5.8. Running Parallel Tasks on Remote Machines<a class="headerlink" href="#58-running-parallel-tasks-on-remote-machines" title="Permanent link">¶</a></h3>
+<p>We can run our parallel tasks on remote machines using <em>parallel</em> through <em>ssh</em>.</p>
+<p>Let’s assume we have access to <em>host1</em> and <em>host2</em> using our username and <em>ssh</em> keys that are added to our system. Let’s try it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span>
+<span class="normal"><a href="#__codelineno-21-3">3</a></span>
+<span class="normal"><a href="#__codelineno-21-4">4</a></span>
+<span class="normal"><a href="#__codelineno-21-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>$ parallel -S host1 -S host2 <span class="nb">echo</span> ::: running on remote hosts
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>running
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a>on
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a>remote
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>hosts
+</code></pre></div></td></tr></table></div>
+<p><strong>The hosts that will run each command and the order of execution will change randomly with every run.</strong></p>
+<h2 id="6-conclusion">6. Conclusion[<a class="headerlink" href="#6-conclusion" title="Permanent link">¶</a></h2>
+<p>In this article, we learned how to use the Bash ampersand <em>&amp;</em> operator, <em>xargs</em>, and GNU <em>parallel</em> to parallelize our tasks on the command line.</p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Laatst geüpdatet:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-09-14T17:13:57+02:00" locale="nl"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-09-14</span>
+<br/>
+        Gecreëerd:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-09-14T17:13:57+02:00" locale="nl"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-09-14</span>
+</small>
+</div>
+<div class="md-source-date">
+<small>
+          Authors: <span class="git-page-authors git-authors"><a href="mailto:bedar89@gmail.com">bedar89</a></span>
+</small>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Vorige: Docker installeren" class="md-footer__link md-footer__link--prev" href="../docker/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Vorige
+              </span>
+              Docker installeren
+            </div>
+</div>
+</a>
+<a aria-label="Volgende: Raspberry Pi OS" class="md-footer__link md-footer__link--next" href="../../raspberry_pi_os/raspberry_pi_os/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Volgende
+              </span>
+              Raspberry Pi OS
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      © 2022 Cowadar
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://discord.gg/kYTDZc5mnG" rel="noopener" target="_blank" title="Discord">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485.065 485.065 0 0 0 404.081 32.03a1.816 1.816 0 0 0-1.923.91 337.461 337.461 0 0 0-14.9 30.6 447.848 447.848 0 0 0-134.426 0 309.541 309.541 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.689 483.689 0 0 0-119.688 37.107 1.712 1.712 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.016 2.016 0 0 0 .765 1.375 487.666 487.666 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321.173 321.173 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251.047 251.047 0 0 0 9.109-7.137 1.819 1.819 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.812 1.812 0 0 1 1.924.233 234.533 234.533 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.407 301.407 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391.055 391.055 0 0 0 30.014 48.815 1.864 1.864 0 0 0 2.063.7A486.048 486.048 0 0 0 610.7 405.729a1.882 1.882 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541ZM222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241Zm195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241Z"></path></svg>
+</a>
+<a class="md-social__link" href="https://www.youtube.com/channel/UCnDHClzKX1bgx8h2JW_Oa_A" rel="noopener" target="_blank" title="Youtube">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
+</a>
+<a class="md-social__link" href="https://www.facebook.com/havenstadrp" rel="noopener" target="_blank" title="Facebook">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.
+</p>
+<input class="md-toggle" id="__settings" type="checkbox"/>
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="analytics" type="checkbox"/>
+<span class="task-list-indicator"></span>
+          Custom name
+        <label>
+</label></label></li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">Accept</button>
+<label class="md-button" for="__settings">Manage settings</label>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);console.log(new FormData(form)),__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "navigation.top", "navigation.instant", "navigation.tracking", "navigation.indexes", "search.suggest", "search.share", "search.highlight", "header.autohide", "content.code.annotate", "content.tooltips"], "search": "../../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.config.lang": "nl", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Zoeken", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+<script src="../../../../assets/javascripts/bundle.48f2be22.min.js"></script>
+<script src="../../../../js/timeago.min.js"></script>
+<script src="../../../../js/timeago_mkdocs_material.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

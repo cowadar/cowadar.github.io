@@ -21,16 +21,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cowadar.github.io/devops/github/github/</loc>
-         <lastmod>2022-09-14</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://cowadar.github.io/devops/github/github_commands/</loc>
-         <lastmod>2022-09-14</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://cowadar.github.io/docker/install/</loc>
          <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
@@ -47,6 +37,11 @@
     </url>
     <url>
          <loc>https://cowadar.github.io/docker/services/gameserver/pterodactyl/pterodactyl/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/network/networking/</loc>
          <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -96,12 +91,37 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://cowadar.github.io/operating_systems/linux/ubuntu/docker/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/operating_systems/linux/ubuntu/parallel/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://cowadar.github.io/operating_systems/linux/ubuntu/snippets/</loc>
          <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cowadar.github.io/operating_systems/linux/ubuntu/ubuntu/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/programming/programming/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/programming/devops/github/github/</loc>
+         <lastmod>2022-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cowadar.github.io/programming/devops/github/github_commands/</loc>
          <lastmod>2022-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
