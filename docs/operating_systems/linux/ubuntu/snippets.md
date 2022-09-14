@@ -2,7 +2,7 @@
 
 ## Beschrijving
 
-Deze snippets werken in Ubuntu of andere [debian](../../../operating_systems/linux/debian.md)-gebaseerde [operating systems](../../../operating_systems/operating_systems.md).
+Deze snippets werken in Ubuntu of andere [debian](../debian.md)-gebaseerde [operating systems](../../operating_systems.md).
 
 ## Show last 5 modified files
 

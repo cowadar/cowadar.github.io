@@ -1,7 +1,7 @@
 # Project information
 site_name: "Personal Knowledge Management"
 site_description: "Documentatie van Cowarol & Bedar"
-site_author: "Cowadar"
+site_author: "Cowarol, Bedar"
 site_url: "https://cowadar.github.io/"
 
 # Copyright
@@ -128,6 +128,7 @@ plugins:
       arguments:
         theme: 'dark'
   - git-authors
+  - rss
 
 
 nav:
@@ -163,6 +164,7 @@ nav:
       - "Parallel": "operating_systems/linux/ubuntu/parallel.md"
     - "Raspberry Pi OS":
       - "Raspberry Pi OS": "operating_systems/linux/raspberry_pi_os/raspberry_pi_os.md"
+    - "Debian": "operating_systems/linux/debian.md"
   - "🤖 Programming":
     - "Programming": "programming/programming.md"
     - "DevOps":
