@@ -56,6 +56,6 @@ git config core.filemode false
 ### User "login"
 
 ```bash
-git config --global user.email "bedar89@gmail.com"
-git config --global user.name "bedar89"
+git config --global user.email "email@mail.com"
+git config --global user.name "username"
 ```
