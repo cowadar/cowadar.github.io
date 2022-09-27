@@ -31,4 +31,4 @@ Uiteraard! Je bent altijd welkom om PR's te sturen.
 
 ## Hoe kan ik jullie contacteren?
 
-Zie [social links] -> Hiervoor linktree ofzo opzetten
+Je kan meer informatie over ons vinden over [[Bedar]] en [[Cowarol]] op de [[cowadar|over Cowadar]] pagina.
