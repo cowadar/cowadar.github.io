@@ -9,9 +9,9 @@
 <meta content="Cowarol, Bedar" name="author"/>
 <link href="https://cowadar.github.io/server/automation/ansible/ansible/" rel="canonical"/>
 <link href="../../../../images/site/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.0" name="generator"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
 <title>Ansible - Personal Knowledge Management</title>
-<link href="../../../../assets/stylesheets/main.2e8b5541.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -959,9 +959,9 @@
 <h1 id="ansible">Ansible<a class="headerlink" href="#ansible" title="Permanent link">¶</a></h1>
 <h2 id="installing-and-upgrading-ansible">Installing and upgrading Ansible<a class="headerlink" href="#installing-and-upgrading-ansible" title="Permanent link">¶</a></h2>
 <h3 id="locating-python">Locating Python<a class="headerlink" href="#locating-python" title="Permanent link">¶</a></h3>
-<p>Locate and remember the path to the [[Python]] interpreter you wish to use to run Ansible. The following instructions refer to this Python as <code>python3</code>. For example, if you’ve determined that you want the Python at <code>/usr/bin/python3.9</code> to be the one that you’ll install Ansible under, specify that instead of <code>python3</code>.</p>
+<p>Locate and remember the path to the <a href="../../../../programming/python/python/" title="Python">Python</a> interpreter you wish to use to run Ansible. The following instructions refer to this Python as <code>python3</code>. For example, if you’ve determined that you want the Python at <code>/usr/bin/python3.9</code> to be the one that you’ll install Ansible under, specify that instead of <code>python3</code>.</p>
 <h3 id="ensuring-pip-is-available">Ensuring <code>pip</code> is available<a class="headerlink" href="#ensuring-pip-is-available" title="Permanent link">¶</a></h3>
-<p>To verify whether <code>pip</code> is already installed for your preferred [[Python]]:</p>
+<p>To verify whether <code>pip</code> is already installed for your preferred <a href="../../../../programming/python/python/" title="Python">Python</a>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>python3 -m pip -V
 </code></pre></div></td></tr></table></div>
 <p>If all is well, you should see something like the following:</p>
@@ -971,7 +971,7 @@
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a>pip <span class="m">21</span>.0.1 from /usr/lib/python3.9/site-packages/pip <span class="o">(</span>python <span class="m">3</span>.9<span class="o">)</span>
 </code></pre></div></td></tr></table></div>
-<p>If so, <code>pip</code> is available, and you can move on to the [[next step]]</p>
+<p>If so, <code>pip</code> is available, and you can move on to the <a href="../../../next-step" title="next step">next step</a></p>
 <p>If you see an error like <code>No module named pip</code>, you’ll need to install <code>pip</code> under your chosen Python interpreter before proceeding. This may mean installing an additional OS package (for example, <code>python3-pip</code>), or installing the latest <code>pip</code> directly from the Python Packaging Authority by running the following:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -979,14 +979,14 @@
 </code></pre></div></td></tr></table></div>
 <p>You may need to perform some additional configuration before you are able to run Ansible. See the Python documentation on <a href="https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site">installing to the user site</a> for more information.</p>
 <h3 id="installing-ansible">Installing Ansible<a class="headerlink" href="#installing-ansible" title="Permanent link">¶</a></h3>
-<p>Use <code>pip</code> in your selected [[Python]] environment to install the Ansible package of your choice for the current user:</p>
+<p>Use <code>pip</code> in your selected <a href="../../../../programming/python/python/" title="Python">Python</a> environment to install the Ansible package of your choice for the current user:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>python3 -m pip install --user ansible
 </code></pre></div></td></tr></table></div>
-<p>Alternately, you can install a specific version of <code>ansible-core</code> in this [[Python]] environment:</p>
+<p>Alternately, you can install a specific version of <code>ansible-core</code> in this <a href="../../../../programming/python/python/" title="Python">Python</a> environment:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>python3 -m pip install --user ansible-core<span class="o">==</span><span class="m">2</span>.12.3
 </code></pre></div></td></tr></table></div>
 <h3 id="upgrading-ansible">Upgrading Ansible<a class="headerlink" href="#upgrading-ansible" title="Permanent link">¶</a></h3>
-<p>To upgrade an existing Ansible installation in this [[Python]] environment to the latest released version, simply add <code>--upgrade</code> to the command above:</p>
+<p>To upgrade an existing Ansible installation in this <a href="../../../../programming/python/python/" title="Python">Python</a> environment to the latest released version, simply add <code>--upgrade</code> to the command above:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>python3 -m pip install --upgrade --user ansible
 </code></pre></div></td></tr></table></div>
 <h3 id="confirming-your-installation">Confirming your installation<a class="headerlink" href="#confirming-your-installation" title="Permanent link">¶</a></h3>
@@ -1006,11 +1006,6 @@
 <br/>
         Gecreëerd:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-09-14T14:02:51+02:00" locale="nl"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-09-14</span>
-</small>
-</div>
-<div class="md-source-date">
-<small>
-          Authors: <span class="git-page-authors git-authors"><a href="mailto:bedar89@gmail.com">bedar89</a></span>
 </small>
 </div>
 </article>
@@ -1086,7 +1081,7 @@
 <aside class="md-consent__inner">
 <form class="md-consent__form md-grid md-typeset" name="consent">
 <h4>Cookie consent</h4>
-<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.
+<p>We gebruiken cookies om ook uw herhaalde bezoeken en voorkeuren te herkennen om de effectiviteit van onze documentatie te meten en of gebruikers vinden waarnaar ze op zoek zijn. Met uw toestemming helpt u ons om onze documentatie beter te maken.
 </p>
 <input class="md-toggle" id="__settings" type="checkbox"/>
 <div class="md-consent__settings">
@@ -1096,6 +1091,13 @@
 <input checked="" name="analytics" type="checkbox"/>
 <span class="task-list-indicator"></span>
           Google
+        <label>
+</label></label></li>
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox"/>
+<span class="task-list-indicator"></span>
+          GitHub
         <label>
 </label></label></li>
 </ul>
@@ -1108,8 +1110,8 @@
 </aside>
 </div>
 <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);console.log(new FormData(form)),__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
-<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "navigation.top", "navigation.instant", "navigation.tracking", "navigation.indexes", "search.suggest", "search.share", "search.highlight", "header.autohide", "content.code.annotate", "content.tooltips"], "search": "../../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.config.lang": "nl", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Zoeken", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../../../assets/javascripts/bundle.48f2be22.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "navigation.top", "navigation.instant", "navigation.tracking", "navigation.indexes", "search.suggest", "search.share", "search.highlight", "header.autohide", "content.code.annotate", "content.tooltips"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.config.lang": "nl", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Zoeken", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
 <script src="../../../../js/timeago.min.js"></script>
 <script src="../../../../js/timeago_mkdocs_material.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
