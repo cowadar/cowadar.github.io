@@ -198,7 +198,14 @@ nav:
     - "Unraid":
       - "Unraid": "server/unraid/unraid.md"
   - "💾 Software":
+    - "Tools":
+      - "USB Installation media": "software/tools/usb_installation_media.md"
+      - "Balena Etcher": "software/tools/balena-etcher.md"
+      - "Ventoy": "software/tools/ventoy.md"
+      - "Rufus": "software/tools/rufus.md"
+      - "RPI Imager": "software/tools/rpi-imager.md"
     - "Discord": "software/discord/discord.md"
+
   - "📇 Over Cowadar":
     - "Cowadar":
       - "Algemeen": "about/cowadar.md"

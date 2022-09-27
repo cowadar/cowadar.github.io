@@ -15,5 +15,5 @@ It can be especially useful for cases where:
 
 Despite its small size, Rufus provides everything you need!
 
-Oh, and Rufus is **fast**. For instance it's about twice as fast as [UNetbootin](http://unetbootin.sourceforge.net/), [Universal USB Installer](http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3) or [Windows 7 USB download tool](https://www.microsoft.com/en-us/download/windows-usb-dvd-download-tool), on the creation of a Windows 7 USB installation drive from an ISO. It is also marginally faster on the creation of Linux bootable USB from ISOs. [<sup>(1)</sup>](https://rufus.ie/en//#ref1)
-A non exhaustive list of Rufus supported ISOs is also provided at the bottom of this page. [<sup>(2)</sup>](https://rufus.ie/en//#ref2)
+Oh, and Rufus is **fast**. For instance it's about twice as fast as [UNetbootin](http://unetbootin.sourceforge.net/), [Universal USB Installer](http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3) or [Windows 7 USB download tool](https://www.microsoft.com/en-us/download/windows-usb-dvd-download-tool), on the creation of a Windows 7 USB installation drive from an ISO. It is also marginally faster on the creation of Linux bootable USB from ISOs.
+A non exhaustive list of Rufus supported ISOs is also provided at the bottom of this page.
